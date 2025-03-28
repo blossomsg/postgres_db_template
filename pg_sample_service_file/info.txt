@@ -1,0 +1,10 @@
+# Instructions for Windows 11
+# Kindly paste the pg_service.conf in below directory,
+# if "etc" is missing,create the directory and paste the .conf file
+
+C:\Program Files\PostgreSQL\<version>\etc
+
+# Create an environment variable
+system variable
+Variable name - PGSERVICEFILE
+Variable value - C:\Program Files\PostgreSQL\<version>\etc

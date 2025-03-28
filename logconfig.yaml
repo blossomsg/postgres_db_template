@@ -1,0 +1,28 @@
+#https://docs.python.org/3/howto/logging-cookbook.html#custom-handling-of-levels
+
+version: 1
+disable_existing_loggers: true
+formatters:
+  brief:
+    format: "%(message)s"
+  simple:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    datefmt: "%d-%m-%Y %H:%M:%S"
+    validate: true
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: simple
+    level: DEBUG
+    stream: ext://sys.stdout
+  file:
+    class: logging.handlers.RotatingFileHandler
+    formatter: simple
+    level: INFO
+    #  creates log in the current working directory
+    filename: logs/app.log
+    maxBytes: 1024
+    backupCount: 3
+root:
+  level: DEBUG
+  handlers: [ console, file ]
